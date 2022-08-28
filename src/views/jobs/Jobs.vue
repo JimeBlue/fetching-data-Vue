@@ -12,12 +12,25 @@
 export default {
   data() {
     return {
-      jobs: [
-        { title: "Ninja UX Designer", id: 1, details: "lorem" },
-        { title: "Ninja Web Developer", id: 2, details: "lorem" },
-        { title: "Ninja Vue Developer", id: 3, details: "lorem" },
-      ],
+      /* 4)Create a jobs array to store data fetched 
+      from API */
+      jobs: [],
     };
+  },
+  /* 1) The data will be fetched inside the mouted cycle hook */
+  mounted() {
+    /* 2) Use the fetch API to fetch the data, passing with fetch
+    the endpoint provided by json server for fetching the jobs */
+    fetch("http://localhost:3000/jobs")
+      .then((res) => res.json())
+      /* 3) Put the data we fetched inside the jobs array */
+      .then((data) => (this.jobs = data))
+      /* 5) Use catch block, which will fire a function
+      if there is an error, and we get that 
+      error back as an argument inside this function.
+      Here I console log the error message */
+      /* 6) Next steps in JobDetails component */
+      .catch((err) => console.log(err.message));
   },
 };
 </script>
