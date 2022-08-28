@@ -1,10 +1,6 @@
 <template>
   <div>
     <h1>Jobs</h1>
-    <!-- 4) Here instead of showing jobs only if jobs is true,
-    we need to say only if jobs.length is true. This is because,
-  jobs is an array and it will have a value in the begining, it
-won´t be null. -->
     <div v-if="jobs.length">
       <div v-for="job in jobs" :key="job.id" class="job">
         <router-link :to="{ name: 'JobDetails', params: { id: job.id } }">
@@ -12,11 +8,6 @@ won´t be null. -->
         </router-link>
       </div>
     </div>
-    <!-- 5) Else if jobs.length is false, show the message 
-    Loading jobs... -->
-    <!-- 6) Check if message appears simulating a slow connection,
-    go to dev tools > network > No Throttling > GPRS. If it´s not
-  there add it. -->
     <div v-else>
       <p>Loading jobs...</p>
     </div>
